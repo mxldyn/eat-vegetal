@@ -1,0 +1,16 @@
+{
+  "metro:clean:default": "sudo rm -rf $TMPDIR/react-native-packager-cache-* && sudo rm -rf $TMPDIR/metro-bundler-cache-*",
+  "metro:clean:win32": "cd %TEMP% && for /d %G in (\"metro-cache*\") do rd /s /q \"%~G\" && del /q haste-map-metro*",
+  "android:clean:default": "cd ./android && sudo ./gradlew clean",
+  "android:build:default": "cd ./android && sudo ./gradlew clean && sudo ./gradlew assembleRelease",
+  "android:clean:win32": "cd android && gradlew clean",
+  "android:build:win32": "cd android && gradlew clean && gradlew assembleRelease",
+  "android:devices:default": "$ANDROID_HOME/platform-tools/adb devices",
+  "android:reverse:default": "$ANDROID_HOME/platform-tools/adb reverse tcp:8081 tcp:8081",
+  "android:avdlist:default": "$ANDROID_HOME/tools/bin/avdmanager list",
+  "android:create:default": "$ANDROID_HOME/tools/bin/avdmanager create avd -c 100M -n Nexus_5_API_28 -k 'system-images;android-28;google_apis_playstore;x86' -d \"Nexus 5\"",
+  "android:create:win32": "$ANDROID_HOME/tools/bin/avdmanager create avd -c 100M -n Nexus_5_API_28 -k system-images;android-28;google_apis_playstore;x86 -d \"Nexus 5\"",
+  "android:delete:default": "$ANDROID_HOME/tools/bin/avdmanager delete avd -n Nexus_5_API_28",
+  "android:list:default": "$ANDROID_HOME/emulator/emulator -list-avds",
+  "android:open:default": "$ANDROID_HOME/emulator/emulator -avd Nexus_5_API_28"
+}

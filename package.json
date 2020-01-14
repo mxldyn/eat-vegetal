@@ -1,0 +1,111 @@
+{
+  "name": "eatVegetal",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "install:mac": "sudo npm i --allow-root=true --unsafe-perm=true",
+    "start": "react-native start",
+    "test": "jest --watch",
+    "ios": "react-native run-ios",
+    "ios:clean": "sudo rm -rf ./ios/build",
+    "android": "react-native run-android",
+    "android:clean": "node script-os.js",
+    "android:build": "node script-os.js",
+    "android:devices": "node script-os.js",
+    "android:reverse": "node script-os.js",
+    "android:avdlist": "node script-os.js",
+    "android:create": "node script-os.js",
+    "android:delete": "node script-os.js",
+    "android:list": "node script-os.js",
+    "android:open": "node script-os.js",
+    "metro:clean": "node script-os.js",
+    "e2e:start": "appium",
+    "e2e:doctor": "appium-doctor",
+    "e2e:android": "jest --testMatch=\"<rootDir>/appium/index.android.js\" --testPathIgnorePatterns=[]",
+    "e2e:ios": "jest --testMatch=\"<rootDir>/appium/index.ios.js\" --testPathIgnorePatterns=[]",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "lint:check": "eslint --print-config index.js | eslint-config-prettier-check",
+    "pretty": "prettier --write **/*.{js,json,md}"
+  },
+  "dependencies": {
+    "@react-native-community/masked-view": "0.1.6",
+    "apisauce": "1.1.1",
+    "immer": "5.2.1",
+    "node-libs-react-native": "1.0.3",
+    "prop-types": "15.7.2",
+    "react": "16.9.0",
+    "react-native": "0.61.5",
+    "react-native-camera": "3.15.1",
+    "react-native-gesture-handler": "1.5.3",
+    "react-native-keyboard-aware-scroll-view": "0.9.1",
+    "react-native-paper": "3.4.0",
+    "react-native-reanimated": "1.4.0",
+    "react-native-safe-area-context": "0.6.2",
+    "react-native-safe-area-view": "1.0.0",
+    "react-native-splash-screen": "3.2.0",
+    "react-native-vector-icons": "6.6.0",
+    "react-navigation": "4.0.10",
+    "react-navigation-redux-helpers": "4.0.1",
+    "react-navigation-stack": "2.0.15",
+    "react-redux": "7.1.3",
+    "redux": "4.0.5",
+    "redux-saga": "1.1.3",
+    "reduxsauce": "1.1.1",
+    "reselect": "4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.8.3",
+    "@babel/runtime": "7.8.3",
+    "@testing-library/jest-native": "3.1.0",
+    "@testing-library/react-hooks": "3.2.1",
+    "@testing-library/react-native": "5.0.3",
+    "@types/jest": "24.0.25",
+    "appium": "1.16.0",
+    "appium-doctor": "1.13.0",
+    "babel-eslint": "10.0.3",
+    "babel-jest": "24.9.0",
+    "eslint": "6.8.0",
+    "eslint-config-airbnb": "18.0.1",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-plugin-eslint-comments": "3.1.2",
+    "eslint-plugin-import": "2.20.0",
+    "eslint-plugin-jest": "23.6.0",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-react-hooks": "1.7.0",
+    "eslint-plugin-react-native": "3.8.1",
+    "eslint-plugin-redux-saga": "1.1.3",
+    "husky": "3.1.0",
+    "jest": "24.9.0",
+    "lint-staged": "9.5.0",
+    "metro-react-native-babel-preset": "0.57.0",
+    "prettier": "1.19.1",
+    "pretty-quick": "2.0.1",
+    "react-test-renderer": "16.9.0",
+    "webdriverio": "5.18.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.lagash.com/starters/create-react-native-app-redux-saga-classic"
+  },
+  "bugs": {
+    "email": "alejandroce@lagash.com",
+    "url": "https://gitlab.lagash.com/starters/create-react-native-app-redux-saga-classic/issues"
+  },
+  "author": {
+    "email": "alejandroce@lagash.com",
+    "name": "Alejandro Carrasco"
+  },
+  "contributors": [
+    {
+      "email": "hernancv@lagash.com",
+      "name": "Hernán Candia"
+    },
+    {
+      "email": "marcost@lagash.com",
+      "name": "Marcos Torres"
+    }
+  ]
+}
