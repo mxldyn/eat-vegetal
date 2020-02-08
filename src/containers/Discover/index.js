@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { RNCamera } from 'react-native-camera';
 
+import { Camera } from '../../components';
 import Main from '../Main';
-
-import styles from './styles';
 
 const Discover = ({ navigation }) => (
   <Main navigation={navigation}>
-    <RNCamera style={styles.camera} captureAudio={false} />
+    <Camera title='Descubrir Vegetales' />
   </Main>
 );
 
