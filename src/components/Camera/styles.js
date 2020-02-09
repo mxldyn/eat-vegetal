@@ -19,12 +19,7 @@ const styles = StyleSheet.create({
   shotTouchable: {
     position: 'absolute',
     alignSelf: 'center',
-    bottom: '7%'
-  },
-  shotButton: {
-    color: white,
-    fontSize: 20,
-    borderColor: white
+    bottom: '1%'
   }
 });
 

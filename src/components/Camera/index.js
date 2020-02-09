@@ -6,10 +6,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { RNCamera } from 'react-native-camera';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { IconButton, Colors } from 'react-native-paper';
 
 import styles from './styles';
-
-const SNAP = 'SNAP';
 
 const Camera = ({ title }) => {
   const [path, setPath] = useState('');
@@ -41,7 +40,7 @@ const Camera = ({ title }) => {
         style={styles.shotTouchable}
         onPress={() => this.takePicture(this)}
       >
-        <Text style={styles.shotButton}> {SNAP} </Text>
+        <IconButton icon='circle' color={Colors.white} size={70} />
       </TouchableOpacity>
     </View>
   );
