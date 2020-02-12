@@ -65,3 +65,7 @@ __snapshots__
 
 # misc
 .vscode
+
+# credentials
+.keystore
+.env.*
