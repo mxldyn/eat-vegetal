@@ -11,6 +11,13 @@ jest
   .mock('react-native-reanimated', () =>
     require('react-native-reanimated/mock')
   )
+  .mock('react-native-screens', () => {
+    const RNScreens = jest.requireActual('react-native-screens');
+
+    jest.spyOn(RNScreens, 'enableScreens').mockImplementation();
+
+    return RNScreens;
+  })
   .mock('react-native-safe-area-view', () => ({
     __esModule: true,
     default: View,

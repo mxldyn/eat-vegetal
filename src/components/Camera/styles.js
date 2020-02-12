@@ -1,25 +1,20 @@
 import { StyleSheet } from 'react-native';
-
-const white = '#fff';
+import { Colors } from 'react-native-paper';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  },
-  camera: {
-    flex: 1
+    flex: 1,
+    alignItems: 'center'
   },
   title: {
-    position: 'absolute',
-    alignSelf: 'center',
+    textAlign: 'center',
     padding: 30,
     fontSize: 30,
-    color: white
+    color: Colors.white
   },
-  shotTouchable: {
-    position: 'absolute',
-    alignSelf: 'center',
-    bottom: '1%'
+  buttonContainer: {
+    flex: 1,
+    justifyContent: 'flex-end'
   }
 });
 
