@@ -1,12 +1,9 @@
-import {
-  createStackNavigator,
-  TransitionPresets
-} from 'react-navigation-stack';
+import createNativeStackNavigator from 'react-native-screens/createNativeStackNavigator';
 
 import { Home, Discover, Tips } from '../../containers';
 import { HOME_SCREEN } from '../screens';
 
-const RootNavigator = createStackNavigator(
+const RootNavigator = createNativeStackNavigator(
   {
     Home,
     Discover,
@@ -14,11 +11,7 @@ const RootNavigator = createStackNavigator(
   },
   {
     initialRouteName: HOME_SCREEN,
-    headerMode: 'none',
-    defaultNavigationOptions: {
-      ...TransitionPresets.SlideFromRightIOS,
-      cardOverlayEnabled: false
-    }
+    headerMode: 'none'
   }
 );
 
