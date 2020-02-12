@@ -3,13 +3,21 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "install:mac": "sudo npm i --allow-root=true --unsafe-perm=true",
+    "install:mac": "sudo npm i --allow-root=true --unsafe-perm=true && cd ios && pod install",
     "start": "react-native start",
     "test": "jest --watch",
-    "ios": "react-native run-ios",
+    "ios:dev": "export ENVFILE=.env.dev && react-native run-ios",
+    "ios:prod": "export ENVFILE=.env.prod && react-native run-ios",
     "ios:clean": "sudo rm -rf ./ios/build",
-    "android": "react-native run-android",
+    "ios:prepare:dev": "export ENV=dev && ./envscript.sh && pbcopy < .env.dev && pbpaste > .env",
+    "ios:prepare:prod": "export ENV=production && ./envscript.sh && pbcopy < .env.prod && pbpaste > .env",
+    "android:dev": "node script-os.js",
+    "android:prod": "node script-os.js",
     "android:clean": "node script-os.js",
+    "android:build:dev": "jetify && node script-os.js",
+    "android:build:prod": "jetify && node script-os.js",
+    "android:build:e2e:dev": "jetify && node script-os.js",
+    "android:build:e2e:prod": "jetify && node script-os.js",
     "android:build": "node script-os.js",
     "android:devices": "node script-os.js",
     "android:reverse": "node script-os.js",
@@ -30,23 +38,31 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.6",
+    "@react-native-community/netinfo": "5.3.3",
     "apisauce": "1.1.1",
     "appcenter": "2.6.1",
     "appcenter-analytics": "2.6.1",
     "appcenter-crashes": "2.6.1",
+    "async": "3.1.1",
     "immer": "5.3.2",
+    "moment": "2.24.0",
     "node-libs-react-native": "1.0.3",
     "prop-types": "15.7.2",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-camera": "3.17.0",
+    "react-native-config": "0.12.0",
+    "react-native-exception-handler": "2.10.8",
+    "react-native-fast-image": "7.0.2",
     "react-native-gesture-handler": "1.5.6",
+    "react-native-image-resizer": "1.2.0",
     "react-native-keyboard-aware-scroll-view": "0.9.1",
     "react-native-paper": "3.6.0",
     "react-native-reanimated": "1.7.0",
     "react-native-safe-area-context": "0.7.2",
     "react-native-safe-area-view": "1.0.0",
     "react-native-screens": "2.0.0-beta.2",
+    "react-native-share": "3.0.0",
     "react-native-splash-screen": "3.2.0",
     "react-native-vector-icons": "6.6.0",
     "react-navigation": "4.1.1",
@@ -56,7 +72,9 @@
     "redux": "4.0.5",
     "redux-saga": "1.1.3",
     "reduxsauce": "1.1.2",
-    "reselect": "4.0.0"
+    "reselect": "4.0.0",
+    "rn-fetch-blob": "0.12.0",
+    "uuid": "3.4.0"
   },
   "devDependencies": {
     "@babel/core": "7.8.4",
@@ -89,27 +107,5 @@
     "pretty-quick": "2.0.1",
     "react-test-renderer": "16.9.0",
     "webdriverio": "5.18.6"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://gitlab.lagash.com/starters/create-react-native-app-redux-saga-classic"
-  },
-  "bugs": {
-    "email": "alejandroce@lagash.com",
-    "url": "https://gitlab.lagash.com/starters/create-react-native-app-redux-saga-classic/issues"
-  },
-  "author": {
-    "email": "alejandroce@lagash.com",
-    "name": "Alejandro Carrasco"
-  },
-  "contributors": [
-    {
-      "email": "hernancv@lagash.com",
-      "name": "Hernán Candia"
-    },
-    {
-      "email": "marcost@lagash.com",
-      "name": "Marcos Torres"
-    }
-  ]
+  }
 }

@@ -1,4 +1,5 @@
 apply plugin: "com.android.application"
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
 
 import com.android.build.OutputFile
 
@@ -131,8 +132,8 @@ android {
         applicationId "com.eatvegetal"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode project.env.get("ANDROID_VERSION_CODE").toInteger()
+        versionName project.env.get("ANDROID_VERSION_NAME")
         missingDimensionStrategy 'react-native-camera', 'general'
     }
     splits {
@@ -150,6 +151,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file(project.env.get("ANDROID_RELEASE_STORE_FILE"))
+            storePassword project.env.get("ANDROID_RELEASE_STORE_PASSWORD")
+            keyAlias project.env.get("ANDROID_RELEASE_KEY_ALIAS")
+            keyPassword project.env.get("ANDROID_RELEASE_KEY_PASSWORD")
+        }
     }
     buildTypes {
         debug {
@@ -158,7 +165,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -176,6 +183,10 @@ android {
             }
 
         }
+    }
+
+    packagingOptions {
+        exclude '**/libjscexecutor.so'
     }
 }
 
@@ -197,6 +208,12 @@ dependencies {
 task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "com.facebook.soloader:soloader:0.8.0"
+    }
 }
 
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle");
