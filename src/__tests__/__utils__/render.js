@@ -5,7 +5,8 @@ import { render } from '@testing-library/react-native';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-view';
 
-import { INITIAL_STATE as example } from '../../reducers/example';
+import { INITIAL_STATE as discover } from '../../reducers/discover';
+import { INITIAL_STATE as global } from '../../reducers/global';
 import { HOME_SCREEN } from '../../navigation/screens';
 
 const navigation = {
@@ -56,7 +57,8 @@ const BaseStoreProvider = ({ children }) => (
             }
           ]
         },
-        example
+        discover,
+        global
       })),
       dispatch: jest.fn(),
       subscribe: jest.fn()

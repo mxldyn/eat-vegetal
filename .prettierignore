@@ -4,3 +4,4 @@ node_modules/
 # other ignored directories
 android/
 ios/
+credentials/

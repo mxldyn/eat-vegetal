@@ -1,5 +1,8 @@
 const TIMEOUTS = {
-  GLOBAL: 20e3
+  FAST: 3e3,
+  INIT: 10e3,
+  GLOBAL: 90e3,
+  UNIT: 5e3
 };
 
 const config = {

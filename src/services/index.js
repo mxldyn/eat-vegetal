@@ -1,6 +1,6 @@
 import { isCancel, CancelToken } from 'apisauce';
 
-import exampleApi from './example';
+import nardaApi from './narda';
 import { TIMEOUTS } from './config';
 
-export { CancelToken, isCancel, exampleApi, TIMEOUTS };
+export { CancelToken, isCancel, nardaApi, TIMEOUTS };

@@ -4,4 +4,10 @@ const getCurrentRouteName = ({ index, routes }) => {
   return routeName;
 };
 
-export { getCurrentRouteName };
+const getCurrentParams = ({ index, routes }) => {
+  const { params } = routes[index];
+
+  return params || {};
+};
+
+export { getCurrentRouteName, getCurrentParams };

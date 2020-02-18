@@ -5,6 +5,8 @@
  * @format
  */
 
+/* eslint-disable global-require */
+
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
@@ -13,5 +15,8 @@ module.exports = {
         inlineRequires: false
       }
     })
+  },
+  resolver: {
+    extraNodeModules: require('node-libs-react-native')
   }
 };
