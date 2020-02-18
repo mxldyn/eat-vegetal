@@ -1,12 +1,12 @@
 const METHODS = {
-  todos: {
-    getTodo: 'GET'
+  images: {
+    upload: 'POST'
   }
 };
 
 const URLS = {
-  todos: {
-    getTodo: 'todos/'
+  images: {
+    upload: 'upload'
   }
 };
 
