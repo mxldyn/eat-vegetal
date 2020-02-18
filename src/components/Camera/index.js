@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from 'react';
+import React, { memo, useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { RNCamera } from 'react-native-camera';
 import { View } from 'react-native';
@@ -11,6 +11,9 @@ import styles from './styles';
 const Camera = ({ title, onTakePicture }) => {
   const _cameraRef = useRef();
   const overlaySpinner = useOverlaySpinner();
+  const [cameraReady, setCameraReady] = useState(false);
+
+  const handleCameraReady = useCallback(() => setCameraReady(true), []);
 
   const handleTakePicture = useCallback(async () => {
     try {
@@ -37,16 +40,24 @@ const Camera = ({ title, onTakePicture }) => {
   }, [onTakePicture, overlaySpinner]);
 
   return (
-    <RNCamera ref={_cameraRef} style={styles.container} captureAudio={false}>
+    <RNCamera
+      ref={_cameraRef}
+      style={styles.container}
+      captureAudio={false}
+      onCameraReady={handleCameraReady}
+    >
       <Text style={styles.title}>{title}</Text>
-      <View style={styles.buttonContainer}>
-        <IconButton
-          color={Colors.white}
-          icon='circle'
-          size={70}
-          onPress={handleTakePicture}
-        />
-      </View>
+      {!!cameraReady && (
+        <View style={styles.buttonContainer}>
+          <IconButton
+            color={Colors.white}
+            icon='circle'
+            size={70}
+            delayPressIn={0}
+            onPress={handleTakePicture}
+          />
+        </View>
+      )}
     </RNCamera>
   );
 };
