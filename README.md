@@ -127,8 +127,7 @@ npm run android:build:prod
 ```
 
 1. Take the file located in "./android/app/build/outputs/bundle/release/app.aab"
-2. Upload to Play Store in Beta channel
-3. Upload to Play Store in Production channel
+2. Upload to Play Store
 
 ### iOS
 
