@@ -10,6 +10,7 @@ import useNavCurrentRouteName from './useNavCurrentRouteName';
 import useNavigationEvents from './useNavigationEvents';
 import useNotification from './useNotification';
 import useOverlaySpinner from './useOverlaySpinner';
+import usePrevious from './usePrevious';
 import useUnmount from './useUnmount';
 import useWindowDimensions from './useWindowDimensions';
 
@@ -26,6 +27,7 @@ export {
   useNavigationEvents,
   useNotification,
   useOverlaySpinner,
+  usePrevious,
   useUnmount,
   useWindowDimensions
 };
