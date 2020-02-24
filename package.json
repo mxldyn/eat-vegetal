@@ -43,7 +43,7 @@
     "appcenter": "3.0.0",
     "appcenter-analytics": "3.0.0",
     "appcenter-crashes": "3.0.0",
-    "async": "3.1.1",
+    "async": "3.2.0",
     "immer": "5.3.2",
     "moment": "2.24.0",
     "node-libs-react-native": "1.0.3",
