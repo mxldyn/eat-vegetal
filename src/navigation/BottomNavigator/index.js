@@ -57,6 +57,7 @@ const BottomNavigator = ({ nav, onNavigate }) => {
       >
         <BottomNavigation
           style={styles.navigation}
+          barStyle={styles.bar}
           navigationState={navigationState}
           onIndexChange={handleIndexChange}
           renderScene={renderScene}

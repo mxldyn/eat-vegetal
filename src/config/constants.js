@@ -13,3 +13,5 @@ export const SNACKBAR_VARIANTS = {
   ERROR: 'error',
   INFO: 'info'
 };
+export const INITIAL_PAGE = 1;
+export const RESULTS_LIMIT = 20;

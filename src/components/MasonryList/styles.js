@@ -1,9 +1,11 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from 'react-native-paper';
 
 const styles = StyleSheet.create({
-  background: {
-    backgroundColor: Colors.red100
+  listFooter: {
+    paddingVertical: 5
+  },
+  listFooterOff: {
+    height: 40
   }
 });
 
