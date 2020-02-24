@@ -13,7 +13,12 @@ import { mergeList } from './utils/data';
 
 const INITIAL_STATE = {
   data: {
-    vegetal: {},
+    vegetal: {
+      id: '',
+      name: '',
+      iconImage: null,
+      pages: []
+    },
     vegetables: {
       data: [],
       page: INITIAL_PAGE

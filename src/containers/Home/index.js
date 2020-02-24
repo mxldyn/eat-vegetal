@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { fetchVegetables } from '../../actions/home';
+import { fetchVegetal, fetchVegetables } from '../../actions/home';
 import { makeGetVegetables, makeGetStatus } from '../../selectors/home';
 import { useActions } from '../../hooks';
 import { MasonryList } from '../../components';
@@ -20,7 +20,8 @@ const Home = ({ navigation }) => {
       status: makeGetStatus()
     })
   );
-  const { onFetchVegetables } = useActions({
+  const { onFetchVegetal, onFetchVegetables } = useActions({
+    onFetchVegetal: fetchVegetal,
     onFetchVegetables: fetchVegetables
   });
 
@@ -39,7 +40,9 @@ const Home = ({ navigation }) => {
     [onFetchVegetables]
   );
 
-  const handlePressImage = useCallback(() => {}, []);
+  const handlePressImage = useCallback(({ id }) => onFetchVegetal(id), [
+    onFetchVegetal
+  ]);
 
   return (
     <Main navigation={navigation} onFocus={handleFocus}>
