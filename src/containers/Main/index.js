@@ -10,7 +10,9 @@ import ids from './identifiers';
 import baseStyles from './styles';
 
 const Main = ({
-  navigation,
+  navigation: {
+    state: { routeName }
+  },
   styles,
   children,
   wrapChildren,
@@ -31,11 +33,11 @@ const Main = ({
     children
   );
 
-  useNavigationEvents(onFocus, onBlur, navigation);
+  useNavigationEvents(routeName, onFocus, onBlur);
 
   return (
     <SafeAreaView
-      {...testID(`${ids.SCREEN}_${navigation.state.routeName}`)}
+      {...testID(`${ids.SCREEN}_${routeName}`)}
       style={[baseStyles.contentSafeArea, styles.contentSafeArea]}
       forceInset={{ horizontal: 'always', vertical: 'never' }}
     >

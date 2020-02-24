@@ -9,10 +9,13 @@ const styles = StyleSheet.create({
     elevation: 8
   },
   safeArea: {
-    backgroundColor: colors.primary
+    backgroundColor: colors.surface
   },
   navigation: {
     flex: 0
+  },
+  bar: {
+    backgroundColor: colors.surface
   }
 });
 

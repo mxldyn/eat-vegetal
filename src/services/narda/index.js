@@ -1,7 +1,9 @@
 import createImages from './images';
+import createVegetables from './vegetables';
 
-const imagesApi = {
-  images: createImages()
+const nardaApi = {
+  images: createImages(),
+  vegetables: createVegetables()
 };
 
-export default imagesApi;
+export default nardaApi;

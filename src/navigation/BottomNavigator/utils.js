@@ -16,14 +16,14 @@ const ROUTES = [
     activeIcon: 'home'
   },
   {
-    ...testID(ids.BUTTON_LOCAL_USERS),
+    ...testID(ids.BUTTON_DISCOVER),
     key: DISCOVER_SCREEN,
     title: DISCOVER_MSG,
     icon: 'camera-outline',
     activeIcon: 'camera'
   },
   {
-    ...testID(ids.BUTTON_RANDOM_USERS),
+    ...testID(ids.BUTTON_TIPS),
     key: TIPS_SCREEN,
     title: TIPS_MSG,
     icon: 'star-outline',

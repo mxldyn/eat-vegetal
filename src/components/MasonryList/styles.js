@@ -1,8 +1,11 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center'
+  listFooter: {
+    paddingVertical: 5
+  },
+  listFooterOff: {
+    height: 40
   }
 });
 
