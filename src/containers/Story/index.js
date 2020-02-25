@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -19,12 +19,20 @@ const Story = ({ navigation }) => {
     })
   );
 
+  const handleClose = useCallback(() => {}, []);
+
+  const handleReadMore = useCallback(() => {}, []);
+
   return (
     <Main navigation={navigation}>
       {fetchingId ? (
         <ActivityIndicator />
       ) : (
-        <Stories {...vegetal} textColor='white' backgroundColor='black' />
+        <Stories
+          {...vegetal}
+          onClose={handleClose}
+          onReadMore={handleReadMore}
+        />
       )}
     </Main>
   );
