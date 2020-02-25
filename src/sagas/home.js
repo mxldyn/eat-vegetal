@@ -65,7 +65,7 @@ function* fetchVegetal({ id, refresh }) {
       return;
     }
 
-    yield putResolve(setVegetal(data));
+    yield putResolve(setVegetal(mapVegetables([data])[0]));
   } catch (err) {
     yield call(showError, err);
   } finally {
