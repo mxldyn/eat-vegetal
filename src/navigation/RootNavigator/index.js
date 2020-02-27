@@ -1,17 +1,18 @@
 import createNativeStackNavigator from 'react-native-screens/createNativeStackNavigator';
 
-import { Home, Discover, Tips, Story } from '../../containers';
-import { HOME_SCREEN } from '../screens';
+import { SplashScreen, Home, Discover, Tips, Story } from '../../containers';
+import { SPLASH_SCREEN } from '../screens';
 
 const RootNavigator = createNativeStackNavigator(
   {
+    SplashScreen,
     Home,
     Discover,
     Tips,
     Story
   },
   {
-    initialRouteName: HOME_SCREEN,
+    initialRouteName: SPLASH_SCREEN,
     headerMode: 'none'
   }
 );
