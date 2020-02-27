@@ -10,11 +10,9 @@ import styles from './styles';
 const Tips = ({ textColor, tips, fontSize }) => {
   const renderTip = useCallback(
     (tip, index) => (
-      <View style={styles.tipContainer}>
+      <View key={`${index}`} style={styles.tipContainer}>
         <Icon color={textColor} name='arrow-right' size={fontSize} />
-        <Text key={`${index}`} style={[styles.text, { fontSize }]}>
-          {tip}
-        </Text>
+        <Text style={[styles.text, { fontSize }]}>{tip}</Text>
       </View>
     ),
     [fontSize, textColor]

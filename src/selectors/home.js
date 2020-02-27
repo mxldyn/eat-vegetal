@@ -3,7 +3,14 @@ import { createSelector } from 'reselect';
 const getState = ({ home }) => home;
 
 const makeGetVegetal = () =>
-  createSelector(getState, ({ data: { vegetal } }) => vegetal);
+  createSelector(
+    getState,
+    ({
+      data: {
+        vegetal: { id, name, iconImage, pages }
+      }
+    }) => ({ id, name, iconImage, pages })
+  );
 
 const makeGetVegetables = () =>
   createSelector(getState, ({ data: { vegetables: { data, page } } }) => ({
@@ -14,10 +21,9 @@ const makeGetVegetables = () =>
 const makeGetStatus = () =>
   createSelector(
     getState,
-    ({ status: { refreshing, fetching, refreshingId, fetchingId } }) => ({
+    ({ status: { refreshing, fetching, fetchingId } }) => ({
       refreshing,
       fetching,
-      refreshingId,
       fetchingId
     })
   );
