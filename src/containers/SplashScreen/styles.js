@@ -7,6 +7,11 @@ const styles = StyleSheet.create({
     flex: 1,
     alignContent: 'center',
     color: Colors.black
+  },
+  pic: {
+    height: null,
+    flex: 1,
+    width: null
   }
 });
 
