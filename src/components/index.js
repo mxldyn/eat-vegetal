@@ -1,4 +1,5 @@
 import Alert from './Alert';
+import BottomSheet from './BottomSheet';
 import Camera from './Camera';
 import Content from './Content';
 import MasonryList from './MasonryList';
@@ -9,6 +10,7 @@ import Stories from './Stories';
 
 export {
   Alert,
+  BottomSheet,
   Camera,
   Content,
   MasonryList,

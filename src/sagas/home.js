@@ -14,7 +14,6 @@ import {
 
 import { openNotification } from '../actions/global';
 import {
-  clearVegetal,
   mergeVegetables,
   setVegetal,
   setStatus,
@@ -25,30 +24,20 @@ import { isArray } from '../utils/is';
 import { CancelToken, nardaApi } from '../services';
 import { SNACKBAR_VARIANTS, RESULTS_LIMIT } from '../config/constants';
 import { NOT_FOUND_MSG } from '../config/messages';
-import { STORY_SCREEN } from '../navigation/screens';
 
 import { showError } from './utils/error';
 import { mapVegetables } from './utils/home';
 
 const { vegetables: vegetablesApi } = nardaApi;
-const { NAVIGATE, BACK, navigate } = NavigationActions;
+const { NAVIGATE, BACK } = NavigationActions;
 const { REPLACE, PUSH } = StackActions;
 const { WARNING } = SNACKBAR_VARIANTS;
 
 const cancelConfig = { cancelToken: null };
 
-function* fetchVegetal({ id, refresh }) {
-  const statusKey = refresh ? 'refreshingId' : 'fetchingId';
-
+function* fetchVegetal({ id }) {
   try {
-    yield putResolve(setStatus(statusKey, id));
-
-    if (!refresh) {
-      yield all([
-        putResolve(navigate({ routeName: STORY_SCREEN, params: { id } })),
-        putResolve(clearVegetal())
-      ]);
-    }
+    yield putResolve(setStatus('fetchingId', id));
 
     const { ok, data, status, problem } = yield call(
       vegetablesApi.getVegetal,
@@ -65,11 +54,11 @@ function* fetchVegetal({ id, refresh }) {
       return;
     }
 
-    yield putResolve(setVegetal(data));
+    yield putResolve(setVegetal(mapVegetables([data])[0]));
   } catch (err) {
     yield call(showError, err);
   } finally {
-    yield put(setStatus(statusKey, ''));
+    yield put(setStatus('fetchingId', ''));
   }
 }
 

@@ -1,13 +1,23 @@
 const mapVegetables = data =>
-  data.map(({ id, ...rest }) => ({
+  data.map(({ id, textColor, backgroundColor, pages, ...rest }) => ({
     ...rest,
     key: id,
     source: {
       uri:
-        'https://images.unsplash.com/photo-1500099817043-86d46000d58f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+        'https://www.pikpng.com/pngl/b/303-3039915_collage-de-frutas-png-clipart.png'
     },
     id,
-    iconImage: 'https://avatars2.githubusercontent.com/u/45196619?s=460&v=4'
+    textColor: `#${textColor}`,
+    backgroundColor: `#${backgroundColor}`,
+    iconImage: 'https://avatars2.githubusercontent.com/u/45196619?s=460&v=4',
+    pages:
+      pages &&
+      pages.map(p => ({
+        ...p,
+        familyColor: `#${p.familyColor}`,
+        image:
+          'https://www.pikpng.com/pngl/b/303-3039915_collage-de-frutas-png-clipart.png'
+      }))
   }));
 
 export { mapVegetables };

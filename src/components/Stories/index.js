@@ -1,22 +1,31 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Animated,
   TouchableWithoutFeedback,
   View,
   useWindowDimensions
 } from 'react-native';
 import { Button, Colors } from 'react-native-paper';
+import Animated, { Easing } from 'react-native-reanimated';
 import FastImage from 'react-native-fast-image';
 
 import { usePrevious } from '../../hooks';
 import { READ_MORE_MSG } from '../../config/messages';
 
+import Body from './Body';
 import Header from './Header';
 import ProgressBar from './ProgressBar';
 import styles from './styles';
 
-const Stories = ({ textColor, backgroundColor, name, iconImage, pages }) => {
+const Stories = ({
+  textColor,
+  backgroundColor,
+  name,
+  iconImage,
+  pages,
+  onClose,
+  onReadMore
+}) => {
   const dimensions = useWindowDimensions();
   const _opacityRef = useRef(new Animated.Value(1));
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -52,11 +61,8 @@ const Stories = ({ textColor, backgroundColor, name, iconImage, pages }) => {
 
   const handleLoaded = useCallback(() => setLoaded(true), []);
 
-  const handleClose = useCallback(() => {}, []);
-
-  const handleReadMore = useCallback(() => {}, []);
-
-  const currentImage = (pages[currentIndex] || {}).image;
+  const currentPage = pages[currentIndex] || {};
+  const currentImage = currentPage.image;
   const isLasStory = currentIndex + 1 >= pages.length;
 
   const renderProgressBar = useCallback(
@@ -64,18 +70,18 @@ const Stories = ({ textColor, backgroundColor, name, iconImage, pages }) => {
       <ProgressBar
         {...{ index, currentIndex, delay, pause }}
         key={`${index}`}
-        length={pages.length}
-        loaded={!currentImage || loaded}
+        loaded={!currentImage || loaded || true}
         onNext={handleNext}
       />
     ),
-    [currentImage, currentIndex, handleNext, loaded, pages.length, pause]
+    [currentImage, currentIndex, handleNext, loaded, pause]
   );
 
   useEffect(() => {
     Animated.timing(_opacityRef.current, {
       toValue: pause ? 0 : 1,
-      timing: 300
+      duration: 300,
+      easing: Easing.ease
     }).start();
   }, [pause]);
 
@@ -91,7 +97,7 @@ const Stories = ({ textColor, backgroundColor, name, iconImage, pages }) => {
           style={styles.image}
           source={{ uri: currentImage }}
           onLoadEnd={handleLoaded}
-          resizeMode='stretch'
+          resizeMode='contain'
         />
         <Animated.View
           style={[styles.content, { opacity: _opacityRef.current }]}
@@ -100,13 +106,14 @@ const Stories = ({ textColor, backgroundColor, name, iconImage, pages }) => {
             name={name}
             uri={iconImage}
             color={textColor}
-            onClose={handleClose}
+            onClose={onClose}
           />
+          <Body {...currentPage} {...{ name, textColor }} />
           {!!isLasStory && (
             <Button
               style={styles.readMore}
               mode='contained'
-              onPress={handleReadMore}
+              onPress={onReadMore}
             >
               {READ_MORE_MSG}
             </Button>
@@ -130,7 +137,9 @@ Stories.propTypes = {
   backgroundColor: PropTypes.string,
   name: PropTypes.string.isRequired,
   iconImage: PropTypes.string.isRequired,
-  pages: PropTypes.array.isRequired
+  pages: PropTypes.array.isRequired,
+  onClose: PropTypes.func.isRequired,
+  onReadMore: PropTypes.func.isRequired
 };
 
 export default memo(Stories);
