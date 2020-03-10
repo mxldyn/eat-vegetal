@@ -9,9 +9,8 @@ const styles = StyleSheet.create({
     color: Colors.black
   },
   pic: {
-    height: null,
-    flex: 1,
-    width: null
+    height: '100%',
+    width: '100%'
   }
 });
 

@@ -1,11 +1,16 @@
 import { HOME_MSG, DISCOVER_MSG, TIPS_MSG } from '../../config/messages';
-import { HOME_SCREEN, DISCOVER_SCREEN, TIPS_SCREEN } from '../screens';
+import {
+  SPLASH_SCREEN,
+  HOME_SCREEN,
+  DISCOVER_SCREEN,
+  TIPS_SCREEN
+} from '../screens';
 import { getCurrentRouteName } from '../utils';
 import testID from '../../utils/testID';
 
 import ids from './identifiers';
 
-const LOCKED_SCREENS = [];
+const LOCKED_SCREENS = [SPLASH_SCREEN];
 
 const ROUTES = [
   {
