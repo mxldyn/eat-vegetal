@@ -27,7 +27,6 @@ const INITIAL_STATE = {
   status: {
     refreshing: false,
     fetching: false,
-    refreshingId: '',
     fetchingId: ''
   }
 };

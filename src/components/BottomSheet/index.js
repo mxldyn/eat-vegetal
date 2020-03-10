@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { Keyboard, TouchableWithoutFeedback, View } from 'react-native';
+import GestureRecognizer from 'react-native-swipe-gestures';
 import Animated, { Easing } from 'react-native-reanimated';
 import { Modal, Portal } from 'react-native-paper';
 
@@ -117,7 +118,7 @@ const BottomSheet = forwardRef(
       hideSheet();
     }, [_mountedRef, hideSheet]);
 
-    const handleOverlayPress = useCallback(() => {
+    const handleHide = useCallback(() => {
       if (dismissable) {
         hide();
       }
@@ -172,7 +173,7 @@ const BottomSheet = forwardRef(
     const overlayJSX = (
       <TouchableWithoutFeedback
         {...testID(ids.TOUCH_OVERLAY)}
-        onPress={handleOverlayPress}
+        onPress={handleHide}
       >
         <View style={styles.overlay} />
       </TouchableWithoutFeedback>
@@ -187,7 +188,11 @@ const BottomSheet = forwardRef(
       fullHeight
     );
     const contentJSX = (
-      <Animated.View style={contentStyles}>{children}</Animated.View>
+      <Animated.View style={contentStyles}>
+        <GestureRecognizer style={styles.gesture} onSwipeDown={handleHide}>
+          {children}
+        </GestureRecognizer>
+      </Animated.View>
     );
 
     return (

@@ -5,6 +5,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end'
   },
+  gesture: {
+    flex: 1
+  },
   overlay: StyleSheet.absoluteFill
 });
 
