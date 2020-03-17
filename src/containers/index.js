@@ -1,6 +1,6 @@
 import Discover from './Discover';
 import Home from './Home';
-import SplashScreen from './SplashScreen';
+import SecondarySplashScreen from './SecondarySplashScreen';
 import Tips from './Tips';
 
-export { Discover, Home, SplashScreen, Tips };
+export { Discover, Home, SecondarySplashScreen, Tips };
