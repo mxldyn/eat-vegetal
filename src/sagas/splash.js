@@ -1,6 +1,17 @@
-import { all, call, fork, putResolve, takeLeading } from 'redux-saga/effects';
+import { NavigationActions, StackActions } from 'react-navigation';
+import {
+  all,
+  call,
+  cancel,
+  fork,
+  putResolve,
+  race,
+  take,
+  takeLeading,
+  takeLatest
+} from 'redux-saga/effects';
 
-import { nardaApi } from '../services';
+import { CancelToken, nardaApi } from '../services';
 import { SNACKBAR_VARIANTS } from '../config/constants';
 import { NOT_FOUND_MSG } from '../config/messages';
 import { openNotification } from '../actions/global';
@@ -10,13 +21,13 @@ import { showError } from './utils/error';
 
 const { tips: tipsApi } = nardaApi;
 const { WARNING } = SNACKBAR_VARIANTS;
+const { NAVIGATE, BACK } = NavigationActions;
+const { REPLACE, PUSH } = StackActions;
+const cancelConfig = { cancelToken: null };
 
 function* fetchTip() {
   try {
     const { ok, data, status, problem } = yield call(tipsApi.getTip);
-
-    // eslint-disable-next-line no-console
-    console.log(`SAGAS: ${data.id} ${data.text}`);
 
     if ((!ok || !data) && status !== 404) {
       throw new Error(problem);
@@ -43,4 +54,22 @@ function* watcher() {
   }
 }
 
-export default [fork(watcher)];
+function* watcherCancel() {
+  // eslint-disable-next-line no-useless-catch
+  try {
+    while (true) {
+      const tasks = yield all([takeLatest(FETCH_TIP, fetchTip)]);
+      const { cancel: apiCancel, token: cancelToken } = CancelToken.source();
+
+      cancelConfig.cancelToken = cancelToken;
+
+      yield race([take(NAVIGATE), take(BACK), take(REPLACE), take(PUSH)]);
+      yield cancel(tasks);
+      yield call(apiCancel);
+    }
+  } catch (err) {
+    throw err;
+  }
+}
+
+export default [fork(watcher), fork[watcherCancel]];
