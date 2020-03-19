@@ -12,7 +12,7 @@ const createApi = () => {
   setBaseURL(Config.API_URL);
 
   return {
-    getTips: (text, config = {}) => get(`${TIPS.getTips}${text}`, {}, config)
+    getTip: (config = {}) => get(TIPS.getTip, {}, config)
   };
 };
 

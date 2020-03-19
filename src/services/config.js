@@ -6,7 +6,7 @@ const TIMEOUTS = {
 };
 
 const config = {
-  baseURL: null,
+  baseURL: '',
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json'

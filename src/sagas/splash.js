@@ -4,7 +4,7 @@ import { nardaApi } from '../services';
 import { SNACKBAR_VARIANTS } from '../config/constants';
 import { NOT_FOUND_MSG } from '../config/messages';
 import { openNotification } from '../actions/global';
-import { FETCH_TIP } from '../actions/splash';
+import { FETCH_TIP, setTip } from '../actions/splash';
 
 import { showError } from './utils/error';
 
@@ -13,7 +13,10 @@ const { WARNING } = SNACKBAR_VARIANTS;
 
 function* fetchTip() {
   try {
-    const { ok, data, status, problem } = yield call(tipsApi.getTips);
+    const { ok, data, status, problem } = yield call(tipsApi.getTip);
+
+    // eslint-disable-next-line no-console
+    console.log(`SAGAS: ${JSON.stringify(data)}`);
 
     if ((!ok || !data) && status !== 404) {
       throw new Error(problem);
@@ -24,6 +27,8 @@ function* fetchTip() {
 
       return;
     }
+
+    yield putResolve(setTip(data));
   } catch (err) {
     yield call(showError, err);
   }

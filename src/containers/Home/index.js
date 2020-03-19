@@ -33,6 +33,7 @@ const Home = ({ navigation }) => {
       status: makeGetStatus()
     })
   );
+
   const { onClearVegetal, onFetchVegetal, onFetchVegetables } = useActions({
     onClearVegetal: clearVegetal,
     onFetchVegetal: fetchVegetal,

@@ -2,17 +2,18 @@ import { createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions(
   {
-    fetchTip: null
+    fetchTip: null,
+    setTip: ['data']
   },
   {
     prefix: 'SPLASHSCREEN/'
   }
 );
 
-const { fetchTip } = Creators;
+const { fetchTip, setTip } = Creators;
 
-const { FETCH_TIP } = Types;
+const { FETCH_TIP, SET_TIP } = Types;
 
-export { Types, fetchTip, FETCH_TIP };
+export { Types, fetchTip, setTip, FETCH_TIP, SET_TIP };
 
 export default Creators;

@@ -1,11 +1,11 @@
 import createNativeStackNavigator from 'react-native-screens/createNativeStackNavigator';
 
-import { SecondarySplashScreen, Home, Discover, Tips } from '../../containers';
+import { SplashScreen, Home, Discover, Tips } from '../../containers';
 import { SPLASH_SCREEN } from '../screens';
 
 const RootNavigator = createNativeStackNavigator(
   {
-    SecondarySplashScreen,
+    SplashScreen,
     Home,
     Discover,
     Tips

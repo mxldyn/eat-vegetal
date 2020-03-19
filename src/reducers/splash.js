@@ -1,23 +1,23 @@
 import { createReducer } from 'reduxsauce';
 import produce from 'immer';
 
-import { FETCH_TIP } from '../actions/splash';
+import { SET_TIP } from '../actions/splash';
 
 const INITIAL_STATE = {
   data: {
+    id: '',
     text: ''
   },
-  status: {
-    fetching: false
-  }
+  status: {}
 };
 
-const setTip = produce(({ data }, { data: text }) => {
+const setTip = produce(({ data }, { id, text }) => {
+  data.id = id;
   data.text = text;
 });
 
 const reducer = createReducer(INITIAL_STATE, {
-  [FETCH_TIP]: setTip
+  [SET_TIP]: setTip
 });
 
 export { INITIAL_STATE };
