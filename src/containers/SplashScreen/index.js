@@ -13,15 +13,15 @@ import styles from './styles';
 
 const SplashScreen = ({ navigation }) => {
   useMount(() => setTimeout(navigation.navigate, 5e3, HOME_SCREEN));
-  const {
-    data: { id, text }
-  } = useSelector(createStructuredSelector({ data: makeGetTip() }));
+  const { id, text } = useSelector(
+    createStructuredSelector({ data: makeGetTip() })
+  );
   const { onFetchTip } = useActions({ onFetchTip: fetchTip });
 
   // eslint-disable-next-line no-console
   console.log(`fechTip: ${JSON.stringify(onFetchTip())}`);
   // eslint-disable-next-line no-console
-  console.log(`tip: ${JSON.stringify(id)} ${text}`);
+  console.log(`tip: ${id} ${text}`);
   // eslint-disable-next-line no-console
   console.log('----------END OF SplashScreen--------------');
 

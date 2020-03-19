@@ -3,7 +3,7 @@ import { createActions } from 'reduxsauce';
 const { Types, Creators } = createActions(
   {
     fetchTip: null,
-    setTip: ['data']
+    setTip: ['id', 'text']
   },
   {
     prefix: 'SPLASHSCREEN/'

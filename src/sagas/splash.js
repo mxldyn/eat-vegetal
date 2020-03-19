@@ -16,7 +16,7 @@ function* fetchTip() {
     const { ok, data, status, problem } = yield call(tipsApi.getTip);
 
     // eslint-disable-next-line no-console
-    console.log(`SAGAS: ${JSON.stringify(data)}`);
+    console.log(`SAGAS: ${data.id} ${data.text}`);
 
     if ((!ok || !data) && status !== 404) {
       throw new Error(problem);
@@ -28,7 +28,7 @@ function* fetchTip() {
       return;
     }
 
-    yield putResolve(setTip(data));
+    yield putResolve(setTip(data.id, data.text));
   } catch (err) {
     yield call(showError, err);
   }
