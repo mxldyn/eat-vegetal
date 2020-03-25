@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { Colors, Portal, Snackbar as SnackbarBase } from 'react-native-paper';
 import { useSafeArea } from 'react-native-safe-area-view';
-import uuidv1 from 'uuid/v1';
+import { v1 as uuidv1 } from 'uuid';
 
 import { useBackHandlerEvents } from '../../hooks';
 import {

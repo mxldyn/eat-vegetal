@@ -7,9 +7,9 @@ import Header from '../../../components/Stories/Header';
 test('should render a component', () => {
   const { container } = renderProviderWrapper(
     <Header
-      color={Colors.black}
       name='Story'
       uri='https://randomuser.me/api/portraits/thumb/men/75.jpg'
+      color={Colors.black}
       onClose={jest.fn()}
     />
   );

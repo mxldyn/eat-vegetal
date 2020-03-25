@@ -5,6 +5,9 @@ const METHODS = {
   vegetables: {
     getVegetal: 'GET',
     getVegetables: 'GET'
+  },
+  tips: {
+    getTip: 'GET'
   }
 };
 
@@ -15,6 +18,9 @@ const URLS = {
   vegetables: {
     getVegetal: 'vegetables/',
     getVegetables: 'vegetables'
+  },
+  tips: {
+    getTip: 'tips'
   }
 };
 

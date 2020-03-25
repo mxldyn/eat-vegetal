@@ -1,6 +1,6 @@
 {
     "hooks": {
-        "pre-commit": "lint-staged && eslint .",
-        "pre-push": "eslint ."
+        "pre-commit": "npx lint-staged && npx eslint .",
+        "pre-push": "npx eslint ."
     }
 }

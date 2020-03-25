@@ -1,16 +1,13 @@
 import { StyleSheet } from 'react-native';
-import { Colors } from 'react-native-paper';
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 25,
+  contentSafeArea: {
     flex: 1,
-    alignContent: 'center',
-    color: Colors.black
+    justifyContent: 'center'
   },
-  pic: {
-    height: '100%',
-    width: '100%'
+  text: {
+    textAlign: 'center',
+    fontSize: 24
   }
 });
 

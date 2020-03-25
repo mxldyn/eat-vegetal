@@ -9,8 +9,8 @@ test('should render a component', () => {
       index={0}
       currentIndex={0}
       delay={3e3}
-      pause={false}
       loaded
+      pause={false}
       onNext={jest.fn()}
     />
   );

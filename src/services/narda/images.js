@@ -7,9 +7,7 @@ import { URLS } from './config';
 const { images: IMAGES } = URLS;
 
 const createApi = () => {
-  const { setBaseURL, post } = buildApi();
-
-  setBaseURL(Config.API_URL);
+  const { post } = buildApi({ baseURL: Config.API_URL });
 
   return {
     upload: (data, config = {}) => post(IMAGES.upload, data, config)

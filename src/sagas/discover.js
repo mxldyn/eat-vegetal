@@ -6,7 +6,7 @@ import {
   putResolve,
   takeLeading
 } from 'redux-saga/effects';
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 
 import { openNotification, stopSpinner } from '../actions/global';
 import { UPLOAD_IMAGE } from '../actions/discover';

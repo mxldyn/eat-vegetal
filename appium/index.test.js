@@ -8,11 +8,7 @@ const baseConfig = {
   waitforTimeout: 10e3
 };
 
-jest
-  .clearAllMocks()
-  .resetModules()
-  .useRealTimers()
-  .setTimeout(900e3);
+jest.clearAllMocks().resetModules().useRealTimers().setTimeout(900e3);
 
 export default capabilities => {
   beforeAll(async () => {

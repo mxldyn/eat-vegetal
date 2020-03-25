@@ -2,6 +2,7 @@ import { createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions(
   {
+    locationChange: null,
     startSpinner: ['text'],
     stopSpinner: null,
     openAlert: ['title', 'content', 'actions', 'dismissable', 'center', 'icon'],
@@ -15,6 +16,7 @@ const { Types, Creators } = createActions(
 );
 
 const {
+  locationChange,
   startSpinner,
   stopSpinner,
   openAlert,
@@ -24,6 +26,7 @@ const {
 } = Creators;
 
 const {
+  LOCATION_CHANGE,
   START_SPINNER,
   STOP_SPINNER,
   OPEN_ALERT,
@@ -34,12 +37,14 @@ const {
 
 export {
   Types,
+  locationChange,
   startSpinner,
   stopSpinner,
   openAlert,
   closeAlert,
   openNotification,
   closeNotification,
+  LOCATION_CHANGE,
   START_SPINNER,
   STOP_SPINNER,
   OPEN_ALERT,

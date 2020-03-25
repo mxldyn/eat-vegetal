@@ -1,27 +1,32 @@
 import React from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import FastImage from 'react-native-fast-image';
+import { useSelector } from 'react-redux';
+import { Text } from 'react-native-paper';
 
-import { useMount } from '../../hooks';
+import Main from '../Main';
+import { useMount, useActions } from '../../hooks';
 import { HOME_SCREEN } from '../../navigation/screens';
+import { makeGetTip } from '../../selectors/splash';
+import { fetchTip } from '../../actions/splash';
 
 import styles from './styles';
 
 const SplashScreen = ({ navigation }) => {
+  const { text } = useSelector(makeGetTip());
+  const { onFetchTip } = useActions({
+    onFetchTip: fetchTip
+  });
+
   useMount(() => setTimeout(navigation.navigate, 5e3, HOME_SCREEN));
 
   return (
-    <View style={styles.title}>
-      <FastImage
-        style={styles.pic}
-        source={{
-          uri:
-            'https://img.xda-cdn.com/-XFJ4QY0Aoi_KMIW6zVTnQqkt7o=/https%3A%2F%2Fimg.xda-cdn.com%2Fs0iZPLZQQQlto4jNW0ozWfOkKcY%3D%2Fhttp%253A%252F%252Fi.imgur.com%252FVdlaDTZ.png'
-        }}
-        resizeMode={FastImage.resizeMode.contain}
-      />
-    </View>
+    <Main
+      styles={{ contentSafeArea: styles.contentSafeArea }}
+      navigation={navigation}
+      onFocus={onFetchTip}
+    >
+      <Text style={styles.text}>{text}</Text>
+    </Main>
   );
 };
 
