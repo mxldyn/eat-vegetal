@@ -1,10 +1,13 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  text: {
+  contentSafeArea: {
     flex: 1,
-    alignSelf: 'center',
     justifyContent: 'center'
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 24
   }
 });
 

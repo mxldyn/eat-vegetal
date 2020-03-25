@@ -7,9 +7,7 @@ import { URLS } from './config';
 const { tips: TIPS } = URLS;
 
 const createApi = () => {
-  const { setBaseURL, get } = buildApi();
-
-  setBaseURL(Config.API_URL);
+  const { get } = buildApi({ baseURL: Config.API_URL });
 
   return {
     getTip: (config = {}) => get(TIPS.getTip, {}, config)

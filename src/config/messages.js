@@ -6,5 +6,6 @@ export const DISCOVER_MSG = 'Descubrir';
 export const TIPS_MSG = 'Mis tips';
 export const READ_MORE_MSG = 'Ver más';
 export const NOT_FOUND_MSG = 'Oops! 404';
+export const WELCOME_MSG = 'Bienvenido!';
 export const INFO_MSG = 'Información';
 export const NO_INTERNET_MSG = 'No se ha podido establecer conexión a Internet';

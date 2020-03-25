@@ -7,9 +7,7 @@ import { URLS } from './config';
 const { vegetables: VEGETABLES } = URLS;
 
 const createApi = () => {
-  const { setBaseURL, get } = buildApi();
-
-  setBaseURL(Config.API_URL);
+  const { get } = buildApi({ baseURL: Config.API_URL });
 
   return {
     getVegetal: (name, config = {}) =>

@@ -1,4 +1,3 @@
-import { NavigationActions, StackActions } from 'react-navigation';
 import {
   all,
   call,
@@ -6,13 +5,12 @@ import {
   fork,
   put,
   putResolve,
-  race,
   take,
   takeLeading,
   takeLatest
 } from 'redux-saga/effects';
 
-import { openNotification } from '../actions/global';
+import { openNotification, LOCATION_CHANGE } from '../actions/global';
 import {
   mergeVegetables,
   setVegetal,
@@ -29,8 +27,6 @@ import { showError } from './utils/error';
 import { mapVegetables } from './utils/home';
 
 const { vegetables: vegetablesApi } = nardaApi;
-const { NAVIGATE, BACK } = NavigationActions;
-const { REPLACE, PUSH } = StackActions;
 const { WARNING } = SNACKBAR_VARIANTS;
 
 const cancelConfig = { cancelToken: null };
@@ -110,7 +106,7 @@ function* watcherCancel() {
 
       cancelConfig.cancelToken = cancelToken;
 
-      yield race([take(NAVIGATE), take(BACK), take(REPLACE), take(PUSH)]);
+      yield take(LOCATION_CHANGE);
       yield cancel(tasks);
       yield call(apiCancel);
     }

@@ -7,7 +7,7 @@ import home from './home';
 function* root() {
   // eslint-disable-next-line no-useless-catch
   try {
-    yield all([...discover, ...home, ...splash]);
+    yield all([...splash, ...discover, ...home]);
   } catch (err) {
     throw err;
   }
